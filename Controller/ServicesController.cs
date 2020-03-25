@@ -1,25 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServiceInfo.DataAccess;
 
 namespace ServiceInfo.Controller
 {
-    [Route("api/services")]
+    [Route("[controller]")]
     [ApiController]
-    public class ServiceInfoController : ControllerBase
+    public class ServicesController : ControllerBase
     {
         private readonly IRepository<ServiceInfo> repository;
 
-        public ServiceInfoController(IRepository<ServiceInfo> repos)
+        public ServicesController(IRepository<ServiceInfo> repos)
         {
             repository = repos;
         }
 
-        // GET: api/ServiceInfo/5
+        // GET: Services/5
         [HttpGet("{id}", Name = "Get")]
         public IActionResult Get(int id)
         {
@@ -39,7 +36,7 @@ namespace ServiceInfo.Controller
                 return BadRequest("error occured: " + e.Message);
             }
         }
-        // GET: api/ServiceInfo
+        // GET: Services
         [HttpGet]
         public IEnumerable<ServiceInfo> GetAll()
         {
@@ -47,7 +44,7 @@ namespace ServiceInfo.Controller
             return serviceInfos;
         }
 
-        // POST: api/ServiceInfo
+        // POST: Services
         [HttpPost]
         public IActionResult Post([FromBody] ServiceInfo serviceInfo)
         {
@@ -69,7 +66,7 @@ namespace ServiceInfo.Controller
             }
         }
 
-        // PUT: api/ServiceInfo/5
+        // PUT: Services
         [HttpPut("{id}")]
         public IActionResult Put([FromBody] ServiceInfo serviceInfo)
         {
@@ -90,7 +87,7 @@ namespace ServiceInfo.Controller
             }
         }
 
-        // DELETE: api/ApiWithActions/5
+        // DELETE: Services/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
