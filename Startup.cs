@@ -22,6 +22,7 @@ namespace ServiceInfo
         {
             //Database configuration
             services.AddDbContext<ServiceInfoDBContext>(opt => opt.UseInMemoryDatabase("ServiceInfoDB"));
+            services.AddScoped<IRepository<ServiceInfo>, ServiceInfoRepository>();
 
             services.AddControllers();
         }

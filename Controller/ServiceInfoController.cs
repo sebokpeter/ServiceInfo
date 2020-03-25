@@ -27,7 +27,7 @@ namespace ServiceInfo.Controller
             {
                 var serviceInfo = repository.Get(id);
 
-                if (serviceInfo.Id == id)
+                if (serviceInfo.Id != id)
                 {
                     return BadRequest("No object exists for id: " + id);
                 }
