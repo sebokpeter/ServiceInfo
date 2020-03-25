@@ -29,6 +29,17 @@ namespace ServiceInfo
             services.AddScoped<IRepository<ServiceInfo>, ServiceInfoRepository>();
 
             services.AddControllers();
+
+            services.AddSwaggerDocument(config =>
+            {
+                config.PostProcess = document =>
+                {
+                    document.Info.Version = "v1";
+                    document.Info.Title = "Services API";
+                    document.Info.Description = "A simple ASP.NET Core web API";
+                    document.Info.TermsOfService = "None";
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +49,10 @@ namespace ServiceInfo
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            //Swagger
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseHttpsRedirection();
 
