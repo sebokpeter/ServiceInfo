@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ServiceInfo.DataAccess
 {
-    interface IRepository<T>
+    public interface IRepository<T>
     {
         IEnumerable<T> GetAll();
         T Get(int id);
