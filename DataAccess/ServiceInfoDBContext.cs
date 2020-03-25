@@ -8,7 +8,7 @@ namespace ServiceInfo.DataAccess
 {
     public class ServiceInfoDBContext : DbContext
     {
-        public ServiceInfoDBContext() : base() { }
+        public ServiceInfoDBContext(DbContextOptions<ServiceInfoDBContext> options) : base(options) { }
 
         public DbSet<ServiceInfo> ServiceInfos { get; set; }
     }
