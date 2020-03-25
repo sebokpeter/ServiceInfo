@@ -8,7 +8,7 @@ using ServiceInfo.DataAccess;
 
 namespace ServiceInfo.Controller
 {
-    [Route("api/[controller]")]
+    [Route("api/services")]
     [ApiController]
     public class ServiceInfoController : ControllerBase
     {
@@ -36,7 +36,7 @@ namespace ServiceInfo.Controller
             }
             catch (Exception e)
             {
-                return BadRequest("error occured: " + e);
+                return BadRequest("error occured: " + e.Message);
             }
         }
         // GET: api/ServiceInfo
@@ -65,7 +65,7 @@ namespace ServiceInfo.Controller
             }
             catch (Exception e)
             {
-                return BadRequest("error occured: " + e);
+                return BadRequest("error occured: " + e.Message);
             }
         }
 
@@ -86,7 +86,7 @@ namespace ServiceInfo.Controller
             }
             catch (Exception e)
             {
-                return BadRequest("error occured: " + e);
+                return BadRequest("error occured: " + e.Message);
             }
         }
 
@@ -105,7 +105,7 @@ namespace ServiceInfo.Controller
             }
             catch (Exception e)
             {
-                return BadRequest("error occured: " + e);
+                return BadRequest("error occured: " + e.Message);
             }
         }
     }
