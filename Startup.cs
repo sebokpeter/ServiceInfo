@@ -21,7 +21,11 @@ namespace ServiceInfo
         public void ConfigureServices(IServiceCollection services)
         {
             //Database configuration
+#if DEBUG
+            services.AddDbContext<ServiceInfoDBContext>(opt => opt.UseInMemoryDatabase("ServiceInfoDB").EnableSensitiveDataLogging());
+#else
             services.AddDbContext<ServiceInfoDBContext>(opt => opt.UseInMemoryDatabase("ServiceInfoDB"));
+#endif
             services.AddScoped<IRepository<ServiceInfo>, ServiceInfoRepository>();
 
             services.AddControllers();

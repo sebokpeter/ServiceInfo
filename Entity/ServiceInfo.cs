@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace ServiceInfo
 {
@@ -20,6 +21,7 @@ namespace ServiceInfo
         public int Priority { get; set; }
 
         // Get or set the state of the service
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public State ServiceState { get; set; }
     }
 }

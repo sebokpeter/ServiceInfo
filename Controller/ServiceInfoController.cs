@@ -80,16 +80,8 @@ namespace ServiceInfo.Controller
                     return BadRequest("ServiceInfo is null");
                 }
 
-                var modifiedServiceInfo = repository.Get(serviceInfo.Id);
-                if (modifiedServiceInfo == null)
-                {
-                    return BadRequest(" The modified ServiceInfo is null");
-                }
-
-                modifiedServiceInfo = serviceInfo;
-
-                repository.Edit(modifiedServiceInfo);
-                return Ok($"ServiceInfo  with id: {modifiedServiceInfo.Id} is successfully modified");
+                repository.Edit(serviceInfo);
+                return Ok($"ServiceInfo  with id: {serviceInfo.Id} is successfully modified");
 
             }
             catch (Exception e)
